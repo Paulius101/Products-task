@@ -1,0 +1,23 @@
+<p-toolbar>
+
+    <ng-template #start>
+        <div class="flex align-items-center">
+            <p-button (click)="navigateToProducts()"
+                      label="All Products"
+                      class="p-button-text">
+            </p-button>
+        </div>
+    </ng-template>
+
+
+    <ng-template #end>
+        <div class="flex align-items-center gap-3">
+            <p-button (click)="navigateToCart()"
+                      icon="pi pi-shopping-cart"
+                      label="Cart"
+                      class="p-button-rounded p-button-primary"
+                      [badge]="productService.productsInCart().length.toString()">
+            </p-button>
+        </div>
+    </ng-template>
+</p-toolbar>

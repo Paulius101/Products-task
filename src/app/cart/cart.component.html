@@ -1,0 +1,36 @@
+<div class="card p-4 flex justify-content-center">
+    <ng-container *ngIf="productService.productsInCart().length > 0; else emptyCart">
+        <p-orderlist [value]="productService.productsInCart()"
+                     dataKey="id"
+                     breakpoint="575px"
+                     scrollHeight="20rem">
+            <ng-template let-option
+                         let-selected="selected"
+                         #item>
+                <div class="flex flex-wrap p-1 align-items-center gap-4 w-full">
+                    <img class="w-1 h-4rem shrink-0 rounded"
+                         [src]="option.image"
+                         [alt]="option.name" />
+                    <div class="flex-1 flex flex-column">
+                        <span class="font-medium text-sm">{{ option.title }}</span>
+                        <span *ngIf="option.category"
+                              class="font-light text-color-secondary pt-2">{{ option.category |
+                            titlecase }}</span>
+                    </div>
+                    <span class="font-bold sm:ml-8">{{ option.price | currency: 'EUR' }}</span>
+                    <button pButton
+                            icon="pi pi-times"
+                            class="p-button-rounded p-button-danger p-button-text"
+                            (click)="removeFromCart(option)">
+                    </button>
+                </div>
+            </ng-template>
+        </p-orderlist>
+    </ng-container>
+    <ng-template #emptyCart>
+        <div class="flex flex-column align-items-center gap-3">
+            <i class="pi pi-shopping-cart text-4xl text-gray-500"></i>
+            <span class="text-lg text-gray-500">Your cart is empty</span>
+        </div>
+    </ng-template>
+</div>

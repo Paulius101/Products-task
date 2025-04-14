@@ -1,0 +1,49 @@
+<div class="bg-surface-50 flex justify-center rounded p-4">
+    <div class="relative max-w-15rem h-10rem">
+        <img loading="lazy"
+             class="rounded w-full h-10rem"
+             [src]="product.image"
+             [alt]="product.title" />
+        <p-tag *ngIf="isInCart(product)"
+               value="In cart"
+               severity="success"
+               class="absolute"
+               styleClass="dark:!bg-surface-900"
+               [style.left.px]="-16"
+               [style.top.px]="-10" />
+    </div>
+</div>
+<div class="flex flex-column gap-3">
+    <div class="text-lg font-medium text-surface-900 dark:text-surface-0">
+        {{ product.category | titlecase }}
+    </div>
+    <div class="text-lg font-medium text-surface-900 dark:text-surface-0">
+        {{ product.title }}
+    </div>
+    <div class="flex items-center gap-2">
+        <span class="text-surface-500 dark:text-surface-400 text-sm">
+            {{ product.rating.rate }}
+        </span>
+        <i class="pi pi-star-fill text-yellow-500"></i>
+    </div>
+    <div class="text-xl font-semibold text-green-600">
+        {{ product.price | currency: 'EUR' }}
+    </div>
+    <ng-container>
+        <button *ngIf="hasCartButton"
+                (click)="manageProductInCart(product)"
+                pButton
+                [icon]="isInCart(product) ? 'pi pi-times' : 'pi pi-shopping-cart'"
+                [label]="isInCart(product) ? 'Remove' : 'Add to cart'"
+                [class]="isInCart(product) ? 'p-button-danger' : 'p-button-primary'"
+                class="w-10rem h-3rem">
+        </button>
+        <button *ngIf="!hasCartButton"
+                (click)="viewDetails(product)"
+                pButton
+                icon="pi pi-eye"
+                label="View Details"
+                class="p-button-secondary w-10rem h-3rem">
+        </button>
+    </ng-container>
+</div>

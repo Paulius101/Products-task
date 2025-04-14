@@ -1,59 +1,63 @@
-# AngularTask
+This project demonstrates a modular Angular 19+ application using the standalone API, Signals, RxJS, routing, and service-based architecture.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.7.
+## 🚀 Features
 
-## Development server
+- ✅ Angular 19 with **Standalone Components**
+- 🧠 **Global state management** using **Signals**
+- 🔄 **Real-time updates** using **RxJS Subjects**
+- 🛍️ Shopping cart with **add/remove** functionality
+- 🧩 **Routing** between Product List, Product Details, and Cart
+- 🧪 Unit tests using **Jasmine/Karma**
+- 💨 Optimized with `OnPush` change detection
 
-To start a local development server, run:
+## 🛠 Setup & Run
 
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+1. **Install dependencies**
 
 ```bash
-ng generate component component-name
+npm install
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+2. **Run the development server**
 
 ```bash
-ng generate --help
+npm start
 ```
 
-## Building
+3. **Navigate to http://localhost:4200/**
 
-To build the project run:
+4. **Run unit test with coverage**
 
 ```bash
-ng build
+npm test
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+**Results will appear in /coverage/index.html**
 
-## Running unit tests
+## 🧠 My Approach
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### 🔗 Standalone Components
+The application avoids using `NgModules`, leveraging `provideRouter()` and `bootstrapApplication()` for a modular and modern Angular architecture.
 
-```bash
-ng test
-```
+### 🧪 Signals for State
+Product and cart state are managed using Angular **Signals** for efficient and reactive state sharing across components.
 
-## Running end-to-end tests
+### 🔁 RxJS Subject for Events
+An **RxJS Subject** in the `ProductService` emits cart change events, allowing real-time notifications and UI updates when items are added or removed.
 
-For end-to-end (e2e) testing, run:
+### 🎨 UI with PrimeNG & PrimeFlex
+The user interface is styled using **[PrimeNG](https://www.primefaces.org/primeng/)** components and **[PrimeFlex](https://www.primefaces.org/primeflex/)** for layout utilities.
 
-```bash
-ng e2e
-```
+### 🧭 Routing
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+- `/products` – Displays the product list
+- `/products/:id` – Shows product details
+- `/cart` – Displays the shopping cart
 
-## Additional Resources
+### ✅ Unit Testing
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+The `ProductService` is unit tested to cover:
+
+- ✅ Fetching product data
+- ✅ Managing cart state with Signals
+- ✅ Emitting real-time events via `Subject`

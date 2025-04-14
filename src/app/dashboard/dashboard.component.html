@@ -1,0 +1,21 @@
+<div class="card">
+    <p-dataview #dv
+                [value]="productsService.products()"
+                layout="grid"
+                [rows]="4"
+                [paginator]="true">
+        <ng-template #grid
+                     let-items>
+            <div class="grid grid-nogutter gap-4 justify-content-center">
+                <div *ngFor="let product of items; let isLast = last"
+                     class="col-12 md:col-5 lg:col-5 p-2"
+                     [ngClass]="{ 'align-self-start': isLast }">
+                    <div
+                         class="p-6 border border-surface-200 dark:border-surface-700 bg-surface-0 dark:bg-surface-900 rounded flex flex-column gap-4">
+                        <app-product-card [product]="product"></app-product-card>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataview>
+</div>

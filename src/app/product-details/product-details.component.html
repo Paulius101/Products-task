@@ -1,0 +1,13 @@
+<div class="card p-4 flex justify-content-center align-items-center">
+    <ng-container *ngIf="productSignal() as product; else noResults">
+        <app-product-card [product]="productSignal()!"
+                          [hasCartButton]="true"></app-product-card>
+    </ng-container>
+
+    <ng-template #noResults>
+        <div class="flex flex-column align-items-center gap-3">
+            <i class="pi pi-exclamation-triangle text-4xl text-gray-500"></i>
+            <span class="text-lg text-gray-500">No product found</span>
+        </div>
+    </ng-template>
+</div>
